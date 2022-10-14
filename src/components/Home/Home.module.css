@@ -1,0 +1,14 @@
+.home {
+  background-color: #ffffff;
+  max-width: 730px;
+  margin-top: 0;
+  margin: 0 auto auto;
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    margin: 63px auto auto;
+    border-radius: 15px;
+    box-shadow: 0px 20px 60px rgba(73, 97, 168, 0.05);
+  }
+}
