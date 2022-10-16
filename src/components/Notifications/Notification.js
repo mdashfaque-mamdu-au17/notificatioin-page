@@ -1,13 +1,22 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Notification.module.css';
-const Notification = ({ notification }) => {
+const Notification = ({ notification, notificationCount }) => {
+  const [readStatus, setReadStatus] = useState(notification.readStatus);
+  useEffect(() => {
+    if (notificationCount < 1) {
+      setReadStatus(true);
+    }
+  }, [notificationCount]);
+
   return (
     <>
       <div
         className={classNames(
           styles.notification,
-          !notification?.readStatus && styles.unread
+          !readStatus && styles.unread,
+          notification.reactionType === 'message' &&
+            styles.notification__message
         )}
       >
         <div>
@@ -53,7 +62,7 @@ const Notification = ({ notification }) => {
                   {notification?.group}
                 </a>
               )}
-              {!notification?.readStatus && (
+              {!readStatus && (
                 <span className={classNames(styles.unread__mark)}></span>
               )}
             </p>
@@ -68,6 +77,16 @@ const Notification = ({ notification }) => {
             )}
             {notification.reactionType !== 'commented' && (
               <span className={classNames(styles.timestamp)}>
+                {notification?.timeAgo} ago
+              </span>
+            )}
+            {notification.reactionType === 'commented' && (
+              <span
+                className={classNames(
+                  styles.timestamp,
+                  styles.comment__timestamp
+                )}
+              >
                 {notification?.timeAgo} ago
               </span>
             )}

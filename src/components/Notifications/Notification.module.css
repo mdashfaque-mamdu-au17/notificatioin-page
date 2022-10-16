@@ -82,14 +82,20 @@
   line-height: 18px;
 }
 
+.comment__timestamp {
+  position: absolute;
+  bottom: 0px;
+}
+
 .message__box {
   margin-left: 68px;
-  margin-right: 28px;
+  margin-right: 12px;
   padding: 16px;
   border: 1px solid #dde7ee;
   border-radius: 5px;
   transition: background;
   transition-duration: 1s;
+  margin-bottom: 16px;
 }
 
 .message__box:hover {
@@ -106,6 +112,15 @@
   font-weight: 500;
 }
 
+.notification__message {
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 475px) {
+  .comment__timestamp {
+    bottom: 16px;
+  }
+}
 @media screen and (min-width: 768px) {
   .notification {
     padding: 18px 20px;
@@ -141,10 +156,20 @@
 
   .message__box {
     margin-left: 84px;
+    margin-right: 20px;
     padding: 17px 20px 20px 20px;
+    margin-bottom: 18px;
   }
   .message__box p {
     font-size: 16px;
     line-height: 20px;
+  }
+
+  .notification__message {
+    padding-bottom: 0;
+  }
+
+  .comment__timestamp {
+    bottom: 22px;
   }
 }
